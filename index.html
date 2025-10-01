@@ -450,7 +450,7 @@
     </section>
 
     <!-- Education Section -->
-    <section class="py-20 px-6 bg-vscode-surface">
+    <section id="education" class="py-20 px-6 bg-vscode-surface">
         <div class="max-w-4xl mx-auto">
             <h2 class="text-4xl font-light text-center mb-16">
                 education<span class="text-vscode-blue">.</span>
@@ -585,6 +585,11 @@
         </div>
     </section>
 
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="fixed bottom-8 right-8 bg-vscode-blue hover:bg-vscode-green text-white p-3 rounded-full shadow-lg transition-all duration-300 opacity-0 invisible hover:scale-110 z-50">
+        <i class="fas fa-chevron-up text-lg"></i>
+    </button>
+
     <!-- Footer -->
     <footer class="py-8 px-6 bg-vscode-bg border-t border-vscode-border">
         <div class="max-w-4xl mx-auto text-center">
@@ -665,6 +670,28 @@
             if (e.target.tagName === 'A') {
                 mobileMenu.classList.add('hidden');
             }
+        });
+
+        // Scroll to top button functionality
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        
+        // Show/hide scroll to top button based on scroll position
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.remove('opacity-0', 'invisible');
+                scrollToTopBtn.classList.add('opacity-100', 'visible');
+            } else {
+                scrollToTopBtn.classList.add('opacity-0', 'invisible');
+                scrollToTopBtn.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        // Scroll to top when button is clicked
+        scrollToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
     </script>
 </body>
