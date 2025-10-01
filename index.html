@@ -1,510 +1,582 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Personal website, resume, and portfolio for Kevin Mark Andrada">
-    <meta name="author" content="Kevin Mark Andrada">
-
-    <title>Kevin Mark Andrada</title>
-
-    <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="css/style.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="js/vegas/jquery.vegas.css" />
-    <link rel="stylesheet" type="text/css" href="css/dripicon.css" />
-    <link rel="stylesheet" type="text/css" href="css/swipebox.css" />
-
-    <!-- Custom Fonts -->
-    <link href="font-awesome-4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Raleway:400,700,900,300' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
-     <link href='http://fonts.googleapis.com/css?family=Mrs+Sheppards' rel='stylesheet' type='text/css'>
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kevin Andrada - Full Stack Developer</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700&family=JetBrains+Mono:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', 'sans-serif'],
+                        'mono': ['JetBrains Mono', 'monospace']
+                    },
+                    colors: {
+                        'vscode': {
+                            'bg': '#1e1e1e',
+                            'surface': '#252526',
+                            'border': '#3e3e42',
+                            'text': '#cccccc',
+                            'muted': '#969696',
+                            'blue': '#007acc',
+                            'green': '#4ec9b0',
+                            'yellow': '#dcdcaa',
+                            'orange': '#ce9178',
+                            'purple': '#c586c0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* Minimalist futuristic animations */
+        .fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        .glow {
+            transition: all 0.3s ease;
+        }
+        
+        .glow:hover {
+            box-shadow: 0 0 20px rgba(0, 122, 204, 0.3);
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 10px currentColor;
+        }
+        
+        .gradient-border {
+            background: linear-gradient(135deg, #007acc, #4ec9b0) padding-box,
+                        linear-gradient(135deg, #007acc, #4ec9b0) border-box;
+            border: 1px solid transparent;
+        }
+        
+        .typing::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .slide-right {
+            animation: slideRight 0.6s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideRight {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        /* Clean grid pattern */
+        .grid-pattern {
+            background-image: 
+                linear-gradient(rgba(0, 122, 204, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 122, 204, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+        }
+        
+        /* Minimal progress bars */
+        .progress-line {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .progress-line::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 122, 204, 0.6), transparent);
+            animation: progress-sweep 2s ease-in-out;
+        }
+        
+        @keyframes progress-sweep {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+    </style>
 </head>
 
-<body id="page-top" class="index">
-
+<body class="bg-vscode-bg text-vscode-text font-sans overflow-x-hidden">
     <!-- Navigation -->
-    <nav class="navbar navbar-default navbar-fixed-bottom navbar-wrapper">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#page-top">
-                    <p style="font-family:'Franklin Gothic Book';font-size: 30px;">Kevin Mark Andrada</p>
+    <nav class="fixed top-0 w-full z-50 bg-vscode-bg/80 backdrop-blur-sm border-b border-vscode-border">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-mono text-vscode-blue font-medium">codingben.com</div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-vscode-blue transition-colors">about</a>
+                <a href="#work" class="hover:text-vscode-blue transition-colors">work</a>
+                <a href="#education" class="hover:text-vscode-blue transition-colors">education</a>
+                <a href="#skills" class="hover:text-vscode-blue transition-colors">skills</a>
+                <a href="kevinmarkandrada.pdf" target="_blank" class="text-vscode-yellow hover:text-vscode-blue transition-colors">
+                    download cv
                 </a>
             </div>
-
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="page-scroll">
-                        <a href="#about">Profile</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#features">Resume</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a href="#pricing">Skill</a>
-                    </li>
-                    <!-- <li class="page-scroll">
-                        <a href="#portfolio">Portfolio</a>
-                    </li> -->
-                    <li class="page-scroll">
-                        <a href="#contact">Contact</a>
-                    </li>
-                    <li class="page-scroll">
-                        <a target="_blank" href="kevinmarkandrada.pdf">Download CV</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            <button class="md:hidden text-vscode-muted hover:text-vscode-blue">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
-        <!-- /.container-fluid-fluid -->
     </nav>
-    <!-- End of Navigation -->
 
-    <!-- Header -->
-    <header style="background:url('img/mac1.png')">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="intro-text name">
-                        <h1 class="name">Kevin Mark Andrada</h1>
-                        <h3 class="skills">Full Stack Developer / .Net Developer</h3>
-                        <br>
-                        <a class="color-white" href="#about">Scroll <i class="fa fa-arrow-down"></i></a>
-                        
-                    </div>
-
-                </div>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center px-6 grid-pattern">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="fade-in">
+                <h1 class="text-6xl md:text-8xl font-extralight mb-6">
+                    <span class="text-vscode-text">kevin mark andrada</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-vscode-muted mb-8 font-light typing">
+                    .net developer / full stack developer
+                </p>
+                <div class="w-32 h-0.5 bg-gradient-to-r from-vscode-blue to-vscode-green mx-auto mb-12"></div>
             </div>
-        </div>
-    </header>
-    <!-- End of Header -->
-
-    <!-- Profile Section -->
-    <section class="e-campuz" id="about">
-        <div class="ray ray1"></div>
-        <div class="ray ray2"></div>
-        <div class="ray ray3"></div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div data-sr="reset wait 2s enter top and move 150px" class="title-overview">
-                        <h2>
-                            <span class="border-white">About Me</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-
-                <div class="col-sm-4">
-                    <img alt="" data-sr="reset wait 2s enter bottom and move 150px" class="admin-pic img-circle" src="img/pic.jpg">
-
-                </div>
-                <div class="col-sm-8">
-                    <div class="about-nest">
-                        <h2 data-sr="reset wait 1.5s enter left please, and hustle 20px">Hello, I am
-                            <strong>Kevin Mark Andrada</strong>
-                            </h2>
-                        <br>
-
-                        
-                        <p data-sr="reset enter left please, and hustle 20px">
-                            I am a professional Full Stack Developer / .Net Developer with more than 8 years of experience specializing in Microsoft .Net Technologies and Modern Javascript Frameworks. Acquainted in Software Development Methodologies (Agile and Waterfall). Results-oriented person and excellent in providing technical and business solutions and with an experience in Enterprise Solutions Integration. A man of focus and commitment. </p>
-                        <br>
-                        <ul data-sr='reset enter right please, and hustle 40px' class="about-detail">
-                            <li><i class="icon-user-group"></i>Male</li>
-                            <li><i class="icon-heart"></i>Born on January 8, 1993</li>
-                            <li><i class="icon-location"></i>Bataan, Philippines</li>
-                            <li><i class="icon-gaming"></i>Coding</li>
-                        </ul>
-
-
-                        <ul data-sr='reset wait 1.5s enter right please, and hustle 40px' class="list-inline pull-right social-list">
-                            <li>
-                                <a href="https://github.com/kevandrada" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-github-alt"></i></a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/in/kevinmarkandrada" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="ray-bottom ray1"></div>
-        <div class="ray-bottom ray2"></div>
-        <div class="ray-bottom ray3"></div>
-    </section>
-    <!-- End of Profile Section -->
-
-
-
-    <!-- Resume Section -->
-    <section class="success" id="features">
-        <div class="arrow-down"></div>
-        <div class="ray-top ray1"></div>
-        <div class="ray-top ray2"></div>
-        <div class="ray-top ray3"></div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="title-overview">
-                        <h2 class="color-yellow title-change-color">
-                            <span class="border-color">Resume</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-
             
 
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="resume-content">
-                        <h3><span>Experience</span></h3>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="resume-content">
-                        <div>
-                            <h4>Sr C# AWS Developer</h4>
-                            <h4>Crawford & Company</h4>
-                            <b>May 2024 - Present</b>
-                            <h5>Key achievements</h5>
-                            <ul>
-                                <li>Providing solutions for Horizontal Projects</li>
-                            </ul>
-                            <h5>Projects</h5>
-                            <ul>
-                                <li>Development of Horizontal Projects
-                                    <br /><i>Technologies: .Net using Fastendpoints, RESTful API, AWS, Docker, Postgresql</i>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4>Fullstack Software Engineer</h4>
-                            <h4>Booth & Partners</h4>
-                            <b>Dec 2021 - May 2024</b>
-                            <h5>Key achievements</h5>
-                            <ul>
-                                <li>Full Stack Engineer in Spirit Technology Solutions (Australian Client).</li>
-                                <li>Providing solutions to automate workflows and business processes.</li>
-                            </ul>
-                            <h5>Projects</h5>
-                            <ul>
-                                <li>Development and integration with Autotask, NetSuite, Selcomm and Dynamics 365.
-                                    <br /><i>Technologies: .Net Core, RESTful API, Azure Functions, Power Automate, Dynamics CRM, Dynamics Finance and Operations</i>
-                                </li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div>
-                            <h4>Full Stack Developer</h4>
-                            <h4>Two Miss Pink Place Inc.</h4>
-                            <b>Dec 2019 - Dec 2021</b>
-                            <h5>Key achievements</h5>
-                            <ul>                                
-                                <li>Contributed and was one of the main Fullstack Developers in an R&D Setup.</li>
-                            </ul>
-                            <h5>Projects</h5>
-                            <ul>
-                                <li>Winkabet, Lbet, Betenjoy and Quick88Bet (Backoffice and Player Portal Web Apps).
-                                    <br /><i>Technologies: .Net Core, RESTful API, PostgreSQL, Vue JS</i>
-                                </li>
-                                <br />
-                                <li>Background Services (Email Sender, SMS Sender, FXRates)
-                                    <br /><i>Technologies: .Net Core, Kafka, Pusher</i>
-                                </li>
-                                <br />
-                                <li>Bonus Engine (Casino and Sportsbook Providers)
-                                    <br /><i>Technologies: .Net Core, Vue JS, Kafka, Pusher, PostgreSQL</i>
-                                </li>
-                                <br />
-                                <li>Game Providers API Integrations (BTIS, Evolution, Pinnacle, SBOBet, Spadegaming, Flowgaming, Bolegaming) -- Casino and Sportsbook
-                                    <br /><i>Technologies: .Net Core, Vue JS, PostgreSQL</i>
-                                </li>
-                                <br />
-                                <li>Caching Mechanism
-                                    <br /><i>Technologies: Redis, .Net Core</i>
-                                </li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div>
-                            <h4>Analyst Programmer (C#.Net)</h4>
-                            <h4>RCG IT Services Philippines, Inc.</h4>
-                            <b>Jun 2018 - Dec 2019</b>
-                            <h5>Key achievements</h5>
-                            <ul>
-                                <li>Consultant for Essilor Shared Services Inc. and VisionWeb (US Client).</li>
-                                <li>Development of new feature items for the services and web app.</li>
-                            </ul>
-                            <h5>Projects</h5>
-                            <ul>
-                                <li>iSafety Management Services
-                                    <br /><i>Technologies: .Net Core, RESTful API</i>
-                                </li>
-                                <br />
-                                <li>Uprise Web App (EHR and Practice Management)
-                                    <br /><i>Technologies: .Net Framework, .Net Core, ExtJS, MVC Framework</i>
-                                </li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div>
-                            <h4>System Developer</h4>
-                            <h4>SteelAsia Manufacturing Corporation</h4>
-                            <b>Aug 2016 - Jun 2018</b>
-                            <h5>Key achievements</h5>
-                            <ul>
-                                <li>Development of financial modules with Infor ERP Business Solutions (CloudSuite Industrial).</li>
-                                <li>Implemented systems and migrated old systems to new technologies.</li>
-                                <li>Optimization of reports using efficient and effective querying in database.</li>
-                                <li>Providing ERD for effective and efficient data structures.</li>
-                            </ul>
-                            <h5>Projects</h5>
-                            <ul>
-                                <li>Finance System -- Centralized system and reports for Purchase Requisition, Purchase Order, Receipt Entry, Journal Entry, BIR Generating Reports using Infor CloudSuite Industrial Business Solution.
-                                    <br><i>Technologies: SQL Server, CSI, C#</i>
-                                </li>
-                                <br>
-                                <li>Billet Management System -- Centralized system and reports for the inventory of billets, contracts, shipments, and for transferring billets to different plants.
-                                    <br><i>Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap</i>
-                                </li>
-                                <br>
-                                <li>Gate Pass -- Automated system that handles item requests for the incoming and outgoing materials which are to be automatically approved by the heads.
-                                    <br><i>Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap</i>
-                                </li>
-                                <br>
-                                <li>Sick Leave Conversion-- Centralized module and reports to convert sick leaves of all the employees from different database servers from different plants. Special Update, Bulk Update and Individual Update.
-                                    <br><i>Technologies: SQL Server, VB.Net WebForms</i>
-                                </li>
-                                <br>
-                                <li>Truck Billing -- Centralized system and reports for maintenance of truck companies, drivers, documents of trucks and drivers, billing of a load of trucks and other truck-related modules.
-                                    <br><i>Technologies: SQL Server, VB.Net WebForms</i>
-                                </li>
-                                <br>
-                                <li>Photo Keeper -- Centralized system for scrap materials of the companies used by the Scrap Department.
-                                    <br><i>Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap</i>
-                                </li>
-                                <br>
-                                <li>Sales Report and Exchange System -- Centralized modules and reports for automated requesting and approving of sales and exchange requests.
-                                    <br><i>Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap</i>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>            
-            <div class="row">
-                <div class="col-md-2">
-                    <div class="resume-content">
-                        <h3><span>Education</span></h3>
-                    </div>
-                </div>
-                <div class="col-md-10">
-                    <div class="resume-content">
-                        <div>
-                            <h4>Pangasinan State University</h4>
-                            <h4>2011 - 2016</h4>
-                            <ul>
-                                <li>Bachelor of Science in Information and Communications Technology</li>
-                                <li>Society of Young Programmers and Envisioners - Member</li>
-                            </ul>
-                        </div>
-                        <hr>
-                        <div>
-                            <h4>Panpacific University North Philippines</h4>
-                            <h4>2005 - 2009</h4>
-                            <ul>
-                                <li>High School</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
-        </div>
-    </section>
-    <!-- End of Resume Section -->
-
-
-    <!-- Skill Section -->
-    <section class="e-campuz" id="pricing">
-        <div class="arrow-down-white"></div>
-        <div class="ray-top ray1"></div>
-        <div class="ray-top ray2"></div>
-        <div class="ray-top ray3"></div>
-
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="title-overview">
-                        <h2>
-                            <span class="border-white">Back-end Skills</span>
-                        </h2>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="title-overview">
-                        <h2>
-                            <span class="border-white">Front-end Skills</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div>
-                        <ul>
-                            <li><b>C#</b><i> (Up to present version)</i></li>
-                            <li><b>.Net Core </b><i>(2.x, 3.x)</i></li>
-                            <li><b>.Net </b><i>(5.x, 6.x)</i>
-                                <br>
-                                - RESTful API, Entity Framework Core, EF Code Migration, MVC, Razor Pages
-                            </li>
-                            <li><b>SQL Server, Postgresql, MySQL, SQLLite </b>
-                                <br>
-                                - T-SQL, Functions, Stored Procedures, Triggers, Views, Normalization, Relational Database
-                            </li>
-                            <li><b>Authentication & Authorization </b><i>(5.x, 6.x)</i>
-                                <br>
-                                - JWT, Identity Server
-                            </li>
-                            <li><b>CI/CD Integrations </b><i>(5.x, 6.x)</i>
-                                <br>
-                                - Azure, Github, GitBucket
-                            </li>
-                            <li><b>Azure DevOps </b><i>(Azure Functions)</i></li>
-                            <li><b>Caching </b><i>(Redis)</i></li>
-                            <li><b>Linux </b><i>(Ubuntu, Manjaro)</i></li>
-                            <li><b>VB.Net </b><i>(VB Forms)</i></li>
-                            <li><b>NGINX </b></li>
-                            <li><b>Docker </b></li>
-                            <li><b>Node Js </b></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div>
-                        <ul>
-                            <li><b>Vue Js</b><i> (Vuetify, Vuex, Router, CLI)</i></li>
-                            <li><b>Bootstrap</b></li>
-                            <li><b>Axios</b></li>
-                            <li><b>AJAX</b></li>
-                            <li><b>Javascript</b></li>
-                            <li><b>Typescript</b></li>
-                            <li><b>JQuery</b></li>
-                            <li><b>CSS & SCSS</b></li>
-                            <li><b>HTML</b></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="title-overview">
-                            <h2>
-                                <span class="border-white">Personal Skills</span>
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4">
-                    <div>
-                        <ul>
-                            <li><b>Team Work</b></li>
-                            <li><b>Self-motivated</b></li>
-                            <li><b>Initiative</b></li>
-                            <li><b>Creative</b></li>
-                            <li><b>Leadership</b></li>
-                            <li><b>Positive Attitude</b></li>
-                            <li><b>Quick Learning Ability</b></li>
-                            <li><b>Communication Skills</b></li>
-                            <li><b>Proactive</b></li>
-                            <li><b>Self-management</b></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-4"></div>
+            
+            <div class="fade-in flex justify-center space-x-6">
+                <a href="https://github.com/kevandrada" target="_blank" 
+                   class="flex items-center space-x-2 px-6 py-3 border border-vscode-border hover:border-vscode-blue transition-all group">
+                    <i class="fab fa-github group-hover:text-vscode-blue transition-colors"></i>
+                    <span>github</span>
+                </a>
+                <a href="https://www.linkedin.com/in/kevinmarkandrada" target="_blank" 
+                   class="flex items-center space-x-2 px-6 py-3 bg-vscode-blue text-white hover:bg-opacity-80 transition-all">
+                    <i class="fab fa-linkedin"></i>
+                    <span>connect</span>
+                </a>
             </div>
         </div>
     </section>
-    <!-- End of Skill Section -->
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" hidden>
-        <div class="ray-top ray1"></div>
-        <div class="ray-top ray2"></div>
-        <div class="ray-top ray3"></div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="title-overview">
-                        <h2 class="color-yellow title-change-color">
-                            <span class="border-color">Porftolio</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <ul id="filters" class="clearfix">
-                        <li>
-                            <span class="filter active" data-filter="node hackathon front-end iOS presentation">Coming Soon</span>
-                        </li>                        
-                        <li>
-                            <span class="filter" data-filter="node">Coming Soon</span>
-                        </li>
-                    </ul>
-                    <div id="portfoliolist">
-                        <div class="portfolio node" data-cat="node">
-                            <div class="portfolio-wrapper">
-                                <a target="_blank" href="https://www.linkedin.com/in/kevinmarkandrada/">
-                                    <img src="img/portfolio/university-announcements-api.png" alt="" />
-
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="slide-right">
+                    <h2 class="text-4xl font-light mb-6 text-vscode-text">
+                        about<span class="text-vscode-blue">.</span>
+                    </h2>
+                    <p class="text-vscode-muted leading-relaxed mb-6">
+                        Professional Full Stack Developer / .NET Developer with more than 9 years of experience 
+                        specializing in Microsoft .NET Technologies and Modern JavaScript Frameworks. Experienced in 
+                        Software Development Methodologies (Agile and Waterfall) and enterprise-grade application development.
+                    </p>
+                    <p class="text-vscode-muted leading-relaxed mb-8">
+                        Results-oriented professional with proven expertise in providing technical and business solutions, 
+                        specializing in Enterprise Solutions Integration. Dedicated to transforming complex problems 
+                        into elegant, scalable solutions that drive business growth and operational efficiency.
+                    </p>
+                    
+                    <!-- Contact Information -->
+                    <div class="bg-vscode-surface p-6 rounded border border-vscode-border">
+                        <h4 class="text-vscode-blue font-semibold mb-4">Contact Information</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-envelope text-vscode-blue w-5"></i>
+                                <a href="mailto:kevinmarkandrada@gmail.com" class="text-vscode-text hover:text-vscode-blue transition-colors">
+                                    kevinmarkandrada@gmail.com
                                 </a>
-                                <div class="label">
-                                    <div class="label-text">
-                                        <a class="text-title">LinkedIn</a>
-                                        <span class="text-category">Projects</span>
-                                    </div>
-                                    <div class="label-bg"></div>
-                                </div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-phone text-vscode-green w-5"></i>
+                                <a href="tel:+639951982280" class="text-vscode-text hover:text-vscode-green transition-colors">
+                                    +63 995 1982 280
+                                </a>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <i class="fas fa-map-marker-alt text-vscode-yellow w-5"></i>
+                                <span class="text-vscode-muted">Bataan, Philippines</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide-up">
+                    <img src="img/pic.jpg" alt="Kevin Andrada" 
+                         class="w-64 h-64 rounded-full mx-auto object-cover border border-vscode-border floating">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work Experience -->
+    <section id="work" class="py-20 px-6 bg-vscode-surface">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-light text-center mb-16">
+                work<span class="text-vscode-blue">.</span>
+            </h2>
+            
+            <div class="space-y-12">
+                <!-- Current Position -->
+                <div class="fade-in border-l-2 border-vscode-blue pl-8 relative">
+                    <div class="absolute -left-2 top-0 w-3 h-3 bg-vscode-blue rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-medium text-vscode-text mb-1">Sr C# AWS Developer</h3>
+                            <p class="text-vscode-blue font-mono">Crawford & Company</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="inline-block bg-vscode-green text-vscode-bg px-3 py-1 text-xs rounded-full font-medium">
+                                current
+                            </span>
+                            <p class="text-vscode-muted text-sm mt-1">May 2024 - present</p>
+                        </div>
+                    </div>
+                    <p class="text-vscode-muted leading-relaxed mb-4">
+                        Providing solutions for Horizontal Projects using cutting-edge technologies and modern development practices.
+                    </p>
+                    <div class="bg-vscode-surface p-4 rounded border border-vscode-border space-y-2">
+                        <div>
+                            <p class="text-vscode-orange text-sm">Key Achievements:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Providing solutions for Horizontal Projects</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Projects:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Development of Horizontal Projects</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Technologies:</p>
+                            <p class="text-vscode-muted text-sm">.NET using Fastendpoints, RESTful API, AWS, Docker, PostgreSQL</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booth & Partners -->
+                <div class="fade-in border-l-2 border-vscode-muted pl-8 relative">
+                    <div class="absolute -left-2 top-0 w-3 h-3 bg-vscode-muted rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-medium text-vscode-text mb-1">Fullstack Software Engineer</h3>
+                            <p class="text-vscode-blue font-mono">Booth & Partners</p>
+                            <p class="text-vscode-muted text-sm">Spirit Technology Solutions (Australian Client)</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-vscode-muted text-sm">Dec 2021 - May 2024</p>
+                        </div>
+                    </div>
+                    <p class="text-vscode-muted leading-relaxed mb-4">
+                        Full Stack Engineer in Spirit Technology Solutions (Australian Client) providing solutions to 
+                        automate workflows and business processes. Development and integration with enterprise systems.
+                    </p>
+                    <div class="bg-vscode-surface p-4 rounded border border-vscode-border space-y-2">
+                        <div>
+                            <p class="text-vscode-orange text-sm">Key Achievements:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Full Stack Engineer in Spirit Technology Solutions (Australian Client)</li>
+                                <li>• Providing solutions to automate workflows and business processes</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Projects:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Development and integration with Autotask, NetSuite, Selcomm and Dynamics 365</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Technologies:</p>
+                            <p class="text-vscode-muted text-sm">.NET Core, RESTful API, Azure Functions, Power Automate, Dynamics CRM, Dynamics Finance and Operations</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Two Miss Pink Place -->
+                <div class="fade-in border-l-2 border-vscode-muted pl-8 relative">
+                    <div class="absolute -left-2 top-0 w-3 h-3 bg-vscode-muted rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-medium text-vscode-text mb-1">Full Stack Developer</h3>
+                            <p class="text-vscode-blue font-mono">Two Miss Pink Place Inc.</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-vscode-muted text-sm">Dec 2019 - Dec 2021</p>
+                        </div>
+                    </div>
+                    <p class="text-vscode-muted leading-relaxed mb-4">
+                        Fullstack Developer in R&D setup. Built gaming platforms, bonus engines, and integrated multiple game providers.
+                    </p>
+                    <div class="bg-vscode-surface p-4 rounded border border-vscode-border space-y-2">
+                        <div>
+                            <p class="text-vscode-orange text-sm">Key Achievements:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Contributed and was one of the main Fullstack Developers in an R&D Setup</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Key Projects:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Winkabet, Lbet, Betenjoy and Quick88Bet (Backoffice and Player Portal Web Apps)</li>
+                                <li>• Background Services (Email Sender, SMS Sender, FXRates)</li>
+                                <li>• Bonus Engine (Casino and Sportsbook Providers)</li>
+                                <li>• Game Providers API Integrations (BTIS, Evolution, Pinnacle, SBOBet, Spadegaming, Flowgaming, Bolegaming)</li>
+                                <li>• Caching Mechanism</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Technologies:</p>
+                            <p class="text-vscode-muted text-sm">.NET Core, RESTful API, PostgreSQL, Vue.js, Kafka, Pusher, Redis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RCG IT Services -->
+                <div class="fade-in border-l-2 border-vscode-muted pl-8 relative">
+                    <div class="absolute -left-2 top-0 w-3 h-3 bg-vscode-muted rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-medium text-vscode-text mb-1">Analyst Programmer (C#.NET)</h3>
+                            <p class="text-vscode-blue font-mono">RCG IT Services Philippines, Inc.</p>
+                            <p class="text-vscode-muted text-sm">Consultant for Essilor & VisionWeb (US Client)</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-vscode-muted text-sm">Jun 2018 - Dec 2019</p>
+                        </div>
+                    </div>
+                    <p class="text-vscode-muted leading-relaxed mb-4">
+                        Development of new features for enterprise services and healthcare web applications. 
+                        Consultant for Essilor Shared Services Inc. and VisionWeb (US Client).
+                    </p>
+                    <div class="bg-vscode-surface p-4 rounded border border-vscode-border space-y-2">
+                        <div>
+                            <p class="text-vscode-orange text-sm">Key Achievements:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Consultant for Essilor Shared Services Inc. and VisionWeb (US Client)</li>
+                                <li>• Development of new feature items for the services and web app</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Projects:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• iSafety Management Services</li>
+                                <li>• Uprise Web App (EHR and Practice Management)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Technologies:</p>
+                            <p class="text-vscode-muted text-sm">.NET Framework, .NET Core, ExtJS, MVC Framework, RESTful API</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SteelAsia Manufacturing -->
+                <div class="fade-in border-l-2 border-vscode-muted pl-8 relative">
+                    <div class="absolute -left-2 top-0 w-3 h-3 bg-vscode-muted rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-medium text-vscode-text mb-1">System Developer</h3>
+                            <p class="text-vscode-blue font-mono">SteelAsia Manufacturing Corporation</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-vscode-muted text-sm">Aug 2016 - Jun 2018</p>
+                        </div>
+                    </div>
+                    <p class="text-vscode-muted leading-relaxed mb-4">
+                        Developed financial modules with Infor ERP Business Solutions (CloudSuite Industrial), implemented 
+                        systems migration, and optimized database reports. Provided ERD for effective data structures.
+                    </p>
+                    <div class="bg-vscode-surface p-4 rounded border border-vscode-border space-y-2">
+                        <div>
+                            <p class="text-vscode-orange text-sm">Key Achievements:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Development of financial modules with Infor ERP Business Solutions (CloudSuite Industrial)</li>
+                                <li>• Implemented systems and migrated old systems to new technologies</li>
+                                <li>• Optimization of reports using efficient and effective querying in database</li>
+                                <li>• Providing ERD for effective and efficient data structures</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Major Systems Built:</p>
+                            <ul class="text-vscode-muted text-sm space-y-1 ml-4">
+                                <li>• Finance System - Centralized system and reports for Purchase Requisition, Purchase Order, Receipt Entry, Journal Entry, BIR Generating Reports using Infor CloudSuite Industrial</li>
+                                <li>• Billet Management System - Centralized system and reports for inventory of billets, contracts, shipments, and transferring billets to different plants</li>
+                                <li>• Gate Pass Automation System - Automated system for item requests for incoming and outgoing materials with automatic approval workflow</li>
+                                <li>• Truck Billing System - Centralized system for maintenance of truck companies, drivers, documents, and billing</li>
+                                <li>• Photo Keeper System - Centralized system for scrap materials used by the Scrap Department</li>
+                                <li>• Sales Report and Exchange System - Centralized modules for automated requesting and approving of sales and exchange requests</li>
+                                <li>• Sick Leave Conversion System - Module to convert sick leaves of employees from different database servers across plants</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="text-vscode-orange text-sm">Technologies:</p>
+                            <p class="text-vscode-muted text-sm">SQL Server, C#, .NET Framework, MVC Framework, Bootstrap, VB.NET WebForms, CloudSuite Industrial (CSI)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section class="py-20 px-6 bg-vscode-surface">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-light text-center mb-16">
+                education<span class="text-vscode-blue">.</span>
+            </h2>
+            
+            <div class="space-y-8">
+                <!-- University -->
+                <div class="fade-in border-l-2 border-vscode-yellow pl-8 relative">
+                    <div class="absolute -left-2 top-0 w-3 h-3 bg-vscode-yellow rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-medium text-vscode-text mb-1">Bachelor of Science in Information and Communications Technology</h3>
+                            <p class="text-vscode-blue font-mono">Pangasinan State University</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-vscode-muted text-sm">2011 - 2016</p>
+                        </div>
+                    </div>
+                    <p class="text-vscode-muted leading-relaxed">
+                        Society of Young Programmers and Envisioners - Member
+                    </p>
+                </div>
+
+                <!-- High School -->
+                <div class="fade-in border-l-2 border-vscode-muted pl-8 relative">
+                    <div class="absolute -left-2 top-0 w-3 h-3 bg-vscode-muted rounded-full"></div>
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-medium text-vscode-text mb-1">High School</h3>
+                            <p class="text-vscode-blue font-mono">Panpacific University North Philippines</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <p class="text-vscode-muted text-sm">2005 - 2009</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-4xl font-light text-center mb-16">
+                skills<span class="text-vscode-blue">.</span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <!-- Backend Skills -->
+                <div class="slide-up">
+                    <h3 class="text-xl font-medium text-vscode-orange mb-6">Backend</h3>
+                    <div class="space-y-6">
+                        <!-- Core .NET -->
+                        <div class="bg-vscode-surface p-4 rounded border border-vscode-border">
+                            <h4 class="text-vscode-blue font-semibold mb-3">C# / .NET / Python</h4>
+                            <ul class="text-vscode-muted text-sm space-y-1">
+                                <li>• Latest .NET</li>
+                                <li>• Python, FastAPI, FastEndpoints</li>
+                                <li>• RESTful API, Entity Framework Core</li>
+                                <li>• Dapper, Flyway Migration</li>
+                                <li>• EF Code Migration, MVC, Razor Pages</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Databases -->
+                        <div class="bg-vscode-surface p-4 rounded border border-vscode-border">
+                            <h4 class="text-vscode-blue font-semibold mb-3">Databases</h4>
+                            <ul class="text-vscode-muted text-sm space-y-1">
+                                <li>• SQL Server, PostgreSQL, MySQL, SQLite</li>
+                                <li>• DynamoDB, CosmosDB</li>
+                                <li>• T-SQL, Functions, Stored Procedures</li>
+                                <li>• Triggers, Views, Normalization</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Authentication & Cloud -->
+                        <div class="bg-vscode-surface p-4 rounded border border-vscode-border">
+                            <h4 class="text-vscode-blue font-semibold mb-3">Auth & Cloud</h4>
+                            <ul class="text-vscode-muted text-sm space-y-1">
+                                <li>• JWT, Identity Server, Auth0</li>
+                                <li>• Azure, AWS, GitHub, GitBucket</li>
+                                <li>• Azure Functions, Docker, NGINX</li>
+                                <li>• Redis, Linux (Ubuntu, Manjaro), Node.js</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Skills -->
+                <div class="slide-up">
+                    <h3 class="text-xl font-medium text-vscode-green mb-6">Frontend</h3>
+                    <div class="space-y-6">
+                        <!-- JavaScript Frameworks -->
+                        <div class="bg-vscode-surface p-4 rounded border border-vscode-border">
+                            <h4 class="text-vscode-green font-semibold mb-3">JavaScript/TypeScript & Frameworks</h4>
+                            <ul class="text-vscode-muted text-sm space-y-1">
+                                <li>• Vue.js (Vuetify, Vuex, Router, CLI)</li>
+                                <li>• React JS and TypeScript</li>
+                                <li>• JavaScript & TypeScript (Modern ES6+)</li>
+                                <li>• Async/Await, Promises</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Styling & HTTP -->
+                        <div class="bg-vscode-surface p-4 rounded border border-vscode-border">
+                            <h4 class="text-vscode-green font-semibold mb-3">Styling & APIs</h4>
+                            <ul class="text-vscode-muted text-sm space-y-1">
+                                <li>• Bootstrap, TailwindCSS, CSS3, SCSS/Sass</li>
+                                <li>• Axios, AJAX, RESTful Services</li>
+                                <li>• jQuery, HTML5</li>
+                                <li>• Cross-browser compatibility</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Personal Skills -->
+                        <div class="bg-vscode-surface p-4 rounded border border-vscode-border">
+                            <h4 class="text-vscode-purple font-semibold mb-3">Personal Skills</h4>
+                            <div class="grid grid-cols-2 gap-2">
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Team Work</div>
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Self-motivated</div>
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Initiative</div>
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Creative</div>
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Leadership</div>
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Quick Learning</div>
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Communication</div>
+                                <div class="text-xs bg-vscode-bg px-2 py-1 rounded text-vscode-text text-center">Proactive</div>
                             </div>
                         </div>
                     </div>
@@ -512,157 +584,88 @@
             </div>
         </div>
     </section>
-    <!-- End of Portfolio Section -->
-    <!-- Footer -->
-    <footer id="contact" class="text-center footer-above" style="background-image: url(img/shuttle.jpeg); background-size: cover;">
-        <div class="arrow-down-white"></div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="position:relative;z-index:999" class="title-overview">
-                        <h2>
-                            <span class="border-white color-white">Contact</span>
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2">
-                    <address class="text-center nest-address">
-                        <i class="icon-location"></i>&nbsp;General Trias,
-                        <i class="icon-home"></i>&nbsp;Cavite, Philippines
-                        <abbr title="Phone">
-                            <i class="icon-phone"></i>
-                        </abbr>&nbsp; +63 995 1982 280
-                    </address>
-                    <form role="form" style="position:relative;z-index:9999;" method="POST" action="https://formspree.io/f/kevinmarkandrada@gmail.com">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <input type="text" name="name" class="form-control form-footer" placeholder="Your Name">
-                            </div>
-                            <div class="col-md-6">
-                                <input type="text" name="_subject" class="form-control form-footer" placeholder="Subject">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <input type="email" name="email" class="form-control form-footer" placeholder="Email">
-                            </div>
 
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <textarea class="form-control form-footer" name="message" rows="5" placeholder="Message"></textarea>
-                            </div>
-                        </div>
-                        <br>
-                        <button type="submit" class="btn bg-black text-center">Submit</button>
-                    </form>
-                    <br>
-                </div>
-            </div>
+    <!-- Footer -->
+    <footer class="py-8 px-6 bg-vscode-bg border-t border-vscode-border">
+        <div class="max-w-4xl mx-auto text-center">
+            <p class="text-vscode-muted text-sm font-mono">© 2025 codingben.com - Built with ❤️ and VS Code colors</p>
         </div>
     </footer>
 
-    <div class="footer-below">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    Copyright &copy; 2018 kevandrada
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End of Footer -->
-
-
-    <!-- jQuery Version 1.11.0 -->
-    <script src="js/jquery-1.11.0.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-    <script src="js/classie.js"></script>
-    <script src="js/cbpAnimatedHeader.js"></script>
-
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="js/freelancer.js"></script>
-    <script src="js/horizBarChart.js"></script>
-    <!-- portfolio filtered -->
-    <script type="text/javascript" src="js/jquery.easing.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mixitup.min.js"></script>
-    <script type="text/javascript" src="js/jquery.swipebox.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <!-- Gmap  Option -->
-
-    <script src="http://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
-    <script type="text/javascript" src="js/gmap3.min.js"></script>
-    <!--  Sliding settting -->
-    <script src="js/jquery.tabSlideOut.v1.3.js"></script>
-    <script src='js/scrollReveal.js'></script>
-    
     <script>
-    window.sr = new scrollReveal();
-    </script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
 
-    <script type="text/javascript">
-    $(function() {
-        //lightbox
-        $('.swipebox').swipebox();
-        //filtered portfolio
-        var filterList = {
-            init: function() {
-                // MixItUp plugin
-                // http://mixitup.io
-                $('#portfoliolist').mixitup({
-                    targetSelector: '.portfolio',
-                    filterSelector: '.filter',
-                    effects: ['fade'],
-                    easing: 'snap',
-                    // call the hover effect
-                    onMixEnd: filterList.hoverEffect()
-                });
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
 
-            },
+        // Observe all animated elements
+        document.querySelectorAll('.fade-in, .slide-up, .slide-right').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            observer.observe(el);
+        });
 
-            hoverEffect: function() {
+        // Progress bar animations
+        const progressBars = document.querySelectorAll('.progress-line div');
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.style.width;
+                    entry.target.parentElement.classList.add('progress-line');
+                }
+            });
+        });
 
-                // Simple parallax effect
-                $('#portfoliolist .portfolio').hover(
-                    function() {
-                        $(this).find('.label').stop().animate({
-                            bottom: 0
-                        }, 200, 'easeOutQuad');
-                        $(this).find('img').stop().animate({
-                            top: -30
-                        }, 500, 'easeOutQuad');
-                    },
-                    function() {
-                        $(this).find('.label').stop().animate({
-                            bottom: -40
-                        }, 200, 'easeInQuad');
-                        $(this).find('img').stop().animate({
-                            top: 0
-                        }, 300, 'easeOutQuad');
-                    }
-                );
+        progressBars.forEach(bar => {
+            bar.style.width = '0%';
+            progressObserver.observe(bar);
+        });
 
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('button');
+        const mobileMenu = document.createElement('div');
+        mobileMenu.className = 'fixed inset-0 bg-vscode-bg z-40 hidden';
+        mobileMenu.innerHTML = `
+            <div class="flex flex-col h-full justify-center items-center space-y-8 text-2xl">
+                <a href="#about" class="hover:text-vscode-blue transition-colors">about</a>
+                <a href="#work" class="hover:text-vscode-blue transition-colors">work</a>
+                <a href="#education" class="hover:text-vscode-blue transition-colors">education</a>
+                <a href="#skills" class="hover:text-vscode-blue transition-colors">skills</a>
+                <a href="kevinmarkandrada.pdf" target="_blank" class="text-vscode-yellow hover:text-vscode-blue transition-colors">
+                    download cv
+                </a>
+            </div>
+        `;
+        document.body.appendChild(mobileMenu);
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
             }
-
-        };
-
-        // Run the show!
-        filterList.init();
-
-    });
+        });
     </script>
-
 </body>
-
 </html>

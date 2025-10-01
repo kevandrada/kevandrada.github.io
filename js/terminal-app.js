@@ -1,8 +1,7 @@
-
 // Terminal Portfolio - Modern JavaScript for Terminal UI
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Terminal-style console greeting
+    // Terminal-style console greeting  
     console.log(`
     ╔══════════════════════════════════════════════╗
     ║        Welcome to Kevin's Terminal           ║
@@ -222,22 +221,3 @@ LinkedIn: linkedin.com/in/kevinmarkandrada
         loginTimeElement.textContent = timeString + ' on ttys001';
     }
 });
-                $(this).parent().parent().animate({
-                    left: '0px'
-                }, {
-                    queue: false,
-                    duration: 500
-                });
-            } else {
-                $(this).parent().parent().animate({
-                    left: '-280px'
-                }, {
-                    queue: false,
-                    duration: 500
-                });
-            }
-            test = !test;
-
-        });
-    
-    });

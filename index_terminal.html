@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Personal website, resume, and portfolio for Kevin Mark Andrada">
+    <meta name="author" content="Kevin Mark Andrada">
+
+    <title>Kevin Mark Andrada - Terminal</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Terminal Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&family=Source+Code+Pro:wght@200;300;400;500;600;700;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'mono': ['JetBrains Mono', 'Source Code Pro', 'Consolas', 'Monaco', 'monospace'],
+                    },
+                    colors: {
+                        'terminal': {
+                            'bg': '#0a0a0a',
+                            'surface': '#1a1a1a',
+                            'border': '#333333',
+                            'text': '#00ff00',
+                            'accent': '#00ffff',
+                            'warning': '#ffff00',
+                            'error': '#ff0000',
+                            'muted': '#888888'
+                        }
+                    },
+                    animation: {
+                        'cursor': 'cursor 1s infinite',
+                        'typing': 'typing 3.5s steps(40, end)',
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.6s ease-out'
+                    },
+                    keyframes: {
+                        cursor: {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0' }
+                        },
+                        typing: {
+                            'from': { width: '0' },
+                            'to': { width: '100%' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-terminal-bg text-terminal-text font-mono min-h-screen">
+    <!-- Terminal Window -->
+    <div class="min-h-screen bg-terminal-bg flex">
+        <!-- Left Sidebar - Navigation -->
+        <div class="w-80 bg-terminal-surface border-r border-terminal-border flex flex-col fixed left-0 top-0 h-screen">
+            <!-- Terminal Header -->
+            <div class="border-b border-terminal-border p-4">
+                <!-- Terminal Window Controls -->
+                <div class="flex items-center space-x-4">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                    </div>
+                    <span class="text-terminal-muted text-sm">kevin@portfolio:~$</span>
+                </div>
+            </div>
+            
+            <!-- Login Info -->
+            <div class="px-6 py-4 border-b border-terminal-border">
+                <div class="text-terminal-muted text-xs">
+                    <span class="text-terminal-text">Last login:</span>
+                    <span id="login-time"></span>
+                </div>
+            </div>
+            
+            <!-- Navigation Menu -->
+            <nav class="flex-1 p-6">
+                <div class="space-y-4">
+                    <div class="text-terminal-warning text-sm font-bold mb-6">
+                        <i class="fas fa-folder-open mr-2"></i>PORTFOLIO STRUCTURE
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <a href="#home" class="terminal-sidebar-link group">
+                            <i class="fas fa-home mr-3"></i>
+                            <span>./home</span>
+                            <div class="text-terminal-muted text-xs ml-6">About Me & Personal Info</div>
+                        </a>
+                        
+                        <a href="#resume" class="terminal-sidebar-link group">
+                            <i class="fas fa-briefcase mr-3"></i>
+                            <span>./resume</span>
+                            <div class="text-terminal-muted text-xs ml-6">Work Experience & Education</div>
+                        </a>
+                        
+                        <a href="#skills" class="terminal-sidebar-link group">
+                            <i class="fas fa-code mr-3"></i>
+                            <span>./skills</span>
+                            <div class="text-terminal-muted text-xs ml-6">Technical & Personal Skills</div>
+                        </a>
+                        
+                        <a href="#contact" class="terminal-sidebar-link group">
+                            <i class="fas fa-envelope mr-3"></i>
+                            <span>./contact</span>
+                            <div class="text-terminal-muted text-xs ml-6">Get In Touch</div>
+                        </a>
+                    </div>
+                    
+                    <div class="border-t border-terminal-border pt-4 mt-8">
+                        <a href="kevinmarkandrada.pdf" target="_blank" class="terminal-sidebar-link group">
+                            <i class="fas fa-download mr-3"></i>
+                            <span>./download-cv.pdf</span>
+                            <div class="text-terminal-muted text-xs ml-6">Download Resume</div>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Terminal Status -->
+                <div class="mt-auto pt-6 border-t border-terminal-border">
+                    <div class="text-terminal-muted text-xs space-y-1">
+                        <div>Status: <span class="text-terminal-text">Online</span></div>
+                        <div>Last updated: <span class="text-terminal-text">Oct 2024</span></div>
+                        <div>Version: <span class="text-terminal-text">v2.0</span></div>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Mobile Menu Toggle (Hidden on desktop) -->
+            <button id="mobile-menu-btn" class="lg:hidden fixed top-4 right-4 z-50 bg-terminal-surface border border-terminal-border rounded p-2 text-terminal-text hover:text-terminal-accent transition-colors">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Right Content Area -->
+        <div class="flex-1 overflow-auto ml-80">
+            <!-- Content Container -->
+            <main class="p-6">
+            <section class="min-h-screen flex flex-col justify-center" id="home">
+                <div class="terminal-window">
+                    <div class="terminal-content space-y-4">
+                        <div class="terminal-line mt-8">
+                            <span class="text-terminal-accent">kevin@portfolio</span>
+                            <span class="text-terminal-muted">:</span>
+                            <span class="text-terminal-text">~$</span>
+                            <span class="text-terminal-text">cat about.md</span>
+                        </div>
+
+                        <div class="terminal-output mt-6">
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                                <!-- Profile Image -->
+                                <div class="lg:col-span-1">
+                                    <div class="terminal-box">
+                                        <div class="terminal-box-header">
+                                            <span class="text-terminal-accent"># Profile Image</span>
+                                        </div>
+                                        <div class="p-6 flex flex-col items-center space-y-4">
+                                            <div class="relative">
+                                                <img src="img/pic.jpg" alt="Kevin Mark Andrada" 
+                                                     class="w-48 h-48 rounded-full border-4 border-terminal-accent object-cover">
+                                                <div class="absolute -bottom-2 -right-2 w-6 h-6 bg-terminal-text rounded-full border-2 border-terminal-bg"></div>
+                                            </div>
+                                            <div class="text-center space-y-2">
+                                                <div class="text-terminal-text text-2xl md:text-3xl font-bold">Kevin Mark Andrada</div>
+                                                <div class="text-terminal-accent text-lg md:text-xl">Full Stack Developer / .NET Developer</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- About Content -->
+                                <div class="lg:col-span-2">
+                                    <div class="terminal-box">
+                                        <div class="terminal-box-header">
+                                            <span class="text-terminal-accent"># About Me</span>
+                                        </div>
+                                        <div class="p-6 space-y-4">
+                                            <div class="terminal-line">
+                                                <span class="text-terminal-warning">## Professional Overview</span>
+                                            </div>
+                                            
+                                            <div class="text-terminal-text leading-relaxed">
+                                                I am a professional Full Stack Developer / .NET Developer with more than 8 years of experience 
+                                                specializing in Microsoft .NET Technologies and Modern JavaScript Frameworks. Acquainted in 
+                                                Software Development Methodologies (Agile and Waterfall). Results-oriented person and excellent 
+                                                in providing technical and business solutions and with an experience in Enterprise Solutions Integration. 
+                                                A man of focus and commitment.
+                                            </div>
+                                            
+                                            <div class="terminal-line mt-6">
+                                                <span class="text-terminal-warning">## Personal Info</span>
+                                            </div>
+                                            
+                                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+                                                <div class="space-y-2">
+                                                    <div class="flex items-center space-x-2">
+                                                        <i class="fas fa-user text-terminal-accent"></i>
+                                                        <span class="text-terminal-muted">Gender:</span>
+                                                        <span class="text-terminal-text">Male</span>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2">
+                                                        <i class="fas fa-birthday-cake text-terminal-accent"></i>
+                                                        <span class="text-terminal-muted">Born:</span>
+                                                        <span class="text-terminal-text">January 8, 1993</span>
+                                                    </div>
+                                                </div>
+                                                <div class="space-y-2">
+                                                    <div class="flex items-center space-x-2">
+                                                        <i class="fas fa-map-marker-alt text-terminal-accent"></i>
+                                                        <span class="text-terminal-muted">Location:</span>
+                                                        <span class="text-terminal-text">Bataan, Philippines</span>
+                                                    </div>
+                                                    <div class="flex items-center space-x-2">
+                                                        <i class="fas fa-code text-terminal-accent"></i>
+                                                        <span class="text-terminal-muted">Passion:</span>
+                                                        <span class="text-terminal-text">Coding</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="terminal-line mt-6">
+                                                <span class="text-terminal-warning">## Social Links</span>
+                                            </div>
+                                            
+                                            <div class="flex space-x-4 mt-4">
+                                                <a href="https://github.com/kevandrada" target="_blank" 
+                                                   class="terminal-social-link">
+                                                    <i class="fab fa-github"></i>
+                                                    <span>GitHub</span>
+                                                </a>
+                                                <a href="https://www.linkedin.com/in/kevinmarkandrada" target="_blank" 
+                                                   class="terminal-social-link">
+                                                    <i class="fab fa-linkedin"></i>
+                                                    <span>LinkedIn</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="terminal-line mt-8">
+                            <span class="text-terminal-accent">kevin@portfolio</span>
+                            <span class="text-terminal-muted">:</span>
+                            <span class="text-terminal-text">~$</span>
+                            <span class="cursor">|</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resume Section -->
+            <section class="py-20" id="resume">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="text-terminal-accent">kevin@portfolio</span>
+                        <span class="text-terminal-muted">:</span>
+                        <span class="text-terminal-text">~$</span>
+                        <span class="text-terminal-text">cat resume.json | jq</span>
+                    </div>
+                    
+                    <div class="terminal-content mt-6">
+                        <!-- Experience Section -->
+                        <div class="terminal-box mb-8">
+                            <div class="terminal-box-header">
+                                <span class="text-terminal-warning"># Experience</span>
+                            </div>
+                            <div class="p-6 space-y-8">
+                                <!-- Current Position -->
+                                <div class="terminal-job-entry">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-terminal-accent text-xl font-bold">Sr C# AWS Developer</h3>
+                                            <h4 class="text-terminal-text text-lg">Crawford & Company</h4>
+                                        </div>
+                                        <div class="text-terminal-muted">
+                                            <i class="fas fa-calendar-alt mr-2"></i>May 2024 - Present
+                                        </div>
+                                    </div>
+                                    <div class="ml-4 space-y-2">
+                                        <div class="text-terminal-warning">Key achievements:</div>
+                                        <ul class="terminal-list">
+                                            <li>Providing solutions for Horizontal Projects</li>
+                                        </ul>
+                                        <div class="text-terminal-warning mt-4">Projects:</div>
+                                        <ul class="terminal-list">
+                                            <li>
+                                                Development of Horizontal Projects
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net using Fastendpoints, RESTful API, AWS, Docker, Postgresql
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Previous Positions -->
+                                <div class="terminal-job-entry">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-terminal-accent text-xl font-bold">Fullstack Software Engineer</h3>
+                                            <h4 class="text-terminal-text text-lg">Booth & Partners</h4>
+                                        </div>
+                                        <div class="text-terminal-muted">
+                                            <i class="fas fa-calendar-alt mr-2"></i>Dec 2021 - May 2024
+                                        </div>
+                                    </div>
+                                    <div class="ml-4 space-y-2">
+                                        <div class="text-terminal-warning">Key achievements:</div>
+                                        <ul class="terminal-list">
+                                            <li>Full Stack Engineer in Spirit Technology Solutions (Australian Client)</li>
+                                            <li>Providing solutions to automate workflows and business processes</li>
+                                        </ul>
+                                        <div class="text-terminal-warning mt-4">Projects:</div>
+                                        <ul class="terminal-list">
+                                            <li>
+                                                Development and integration with Autotask, NetSuite, Selcomm and Dynamics 365
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net Core, RESTful API, Azure Functions, Power Automate, Dynamics CRM, Dynamics Finance and Operations
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="terminal-job-entry">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-terminal-accent text-xl font-bold">Full Stack Developer</h3>
+                                            <h4 class="text-terminal-text text-lg">Two Miss Pink Place Inc.</h4>
+                                        </div>
+                                        <div class="text-terminal-muted">
+                                            <i class="fas fa-calendar-alt mr-2"></i>Dec 2019 - Dec 2021
+                                        </div>
+                                    </div>
+                                    <div class="ml-4 space-y-2">
+                                        <div class="text-terminal-warning">Key achievements:</div>
+                                        <ul class="terminal-list">
+                                            <li>Contributed and was one of the main Fullstack Developers in an R&D Setup</li>
+                                        </ul>
+                                        <div class="text-terminal-warning mt-4">Projects:</div>
+                                        <ul class="terminal-list">
+                                            <li>
+                                                Winkabet, Lbet, Betenjoy and Quick88Bet (Backoffice and Player Portal Web Apps)
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net Core, RESTful API, PostgreSQL, Vue JS
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Background Services (Email Sender, SMS Sender, FXRates)
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net Core, Kafka, Pusher
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Bonus Engine (Casino and Sportsbook Providers)
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net Core, Vue JS, Kafka, Pusher, PostgreSQL
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Game Providers API Integrations (BTIS, Evolution, Pinnacle, SBOBet, Spadegaming, Flowgaming, Bolegaming)
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net Core, Vue JS, PostgreSQL
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Caching Mechanism
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: Redis, .Net Core
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="terminal-job-entry">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-terminal-accent text-xl font-bold">Analyst Programmer (C#.Net)</h3>
+                                            <h4 class="text-terminal-text text-lg">RCG IT Services Philippines, Inc.</h4>
+                                        </div>
+                                        <div class="text-terminal-muted">
+                                            <i class="fas fa-calendar-alt mr-2"></i>Jun 2018 - Dec 2019
+                                        </div>
+                                    </div>
+                                    <div class="ml-4 space-y-2">
+                                        <div class="text-terminal-warning">Key achievements:</div>
+                                        <ul class="terminal-list">
+                                            <li>Consultant for Essilor Shared Services Inc. and VisionWeb (US Client)</li>
+                                            <li>Development of new feature items for the services and web app</li>
+                                        </ul>
+                                        <div class="text-terminal-warning mt-4">Projects:</div>
+                                        <ul class="terminal-list">
+                                            <li>
+                                                iSafety Management Services
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net Core, RESTful API
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Uprise Web App (EHR and Practice Management)
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: .Net Framework, .Net Core, ExtJS, MVC Framework
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="terminal-job-entry">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-terminal-accent text-xl font-bold">System Developer</h3>
+                                            <h4 class="text-terminal-text text-lg">SteelAsia Manufacturing Corporation</h4>
+                                        </div>
+                                        <div class="text-terminal-muted">
+                                            <i class="fas fa-calendar-alt mr-2"></i>Aug 2016 - Jun 2018
+                                        </div>
+                                    </div>
+                                    <div class="ml-4 space-y-2">
+                                        <div class="text-terminal-warning">Key achievements:</div>
+                                        <ul class="terminal-list">
+                                            <li>Development of financial modules with Infor ERP Business Solutions (CloudSuite Industrial)</li>
+                                            <li>Implemented systems and migrated old systems to new technologies</li>
+                                            <li>Optimization of reports using efficient and effective querying in database</li>
+                                            <li>Providing ERD for effective and efficient data structures</li>
+                                        </ul>
+                                        <div class="text-terminal-warning mt-4">Projects:</div>
+                                        <ul class="terminal-list">
+                                            <li>
+                                                Finance System -- Centralized system and reports for Purchase Requisition, Purchase Order, Receipt Entry, Journal Entry, BIR Generating Reports using Infor CloudSuite Industrial Business Solution
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: SQL Server, CSI, C#
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Billet Management System -- Centralized system and reports for the inventory of billets, contracts, shipments, and for transferring billets to different plants
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Gate Pass -- Automated system that handles item requests for the incoming and outgoing materials which are to be automatically approved by the heads
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Sick Leave Conversion -- Centralized module and reports to convert sick leaves of all the employees from different database servers from different plants. Special Update, Bulk Update and Individual Update
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: SQL Server, VB.Net WebForms
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Truck Billing -- Centralized system and reports for maintenance of truck companies, drivers, documents of trucks and drivers, billing of a load of trucks and other truck-related modules
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: SQL Server, VB.Net WebForms
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Photo Keeper -- Centralized system for scrap materials of the companies used by the Scrap Department
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap
+                                                </div>
+                                            </li>
+                                            <li>
+                                                Sales Report and Exchange System -- Centralized modules and reports for automated requesting and approving of sales and exchange requests
+                                                <div class="text-terminal-muted text-sm mt-1">
+                                                    Technologies: SQL Server, C#, .Net Framework, MVC Framework, Bootstrap
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Education Section -->
+                        <div class="terminal-box">
+                            <div class="terminal-box-header">
+                                <span class="text-terminal-warning"># Education</span>
+                            </div>
+                            <div class="p-6 space-y-6">
+                                <div class="terminal-education-entry">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-terminal-accent text-xl font-bold">Pangasinan State University</h3>
+                                            <h4 class="text-terminal-text">Bachelor of Science in Information and Communications Technology</h4>
+                                        </div>
+                                        <div class="text-terminal-muted">
+                                            <i class="fas fa-calendar-alt mr-2"></i>2011 - 2016
+                                        </div>
+                                    </div>
+                                    <ul class="terminal-list ml-4">
+                                        <li>Society of Young Programmers and Envisioners - Member</li>
+                                    </ul>
+                                </div>
+
+                                <div class="terminal-education-entry">
+                                    <div class="flex flex-col md:flex-row justify-between items-start mb-4">
+                                        <div>
+                                            <h3 class="text-terminal-accent text-xl font-bold">Panpacific University North Philippines</h3>
+                                            <h4 class="text-terminal-text">High School</h4>
+                                        </div>
+                                        <div class="text-terminal-muted">
+                                            <i class="fas fa-calendar-alt mr-2"></i>2005 - 2009
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="py-20" id="skills">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="text-terminal-accent">kevin@portfolio</span>
+                        <span class="text-terminal-muted">:</span>
+                        <span class="text-terminal-text">~$</span>
+                        <span class="text-terminal-text">cat skills.yml</span>
+                    </div>
+                    
+                    <div class="terminal-content mt-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Backend Skills -->
+                            <div class="terminal-box">
+                                <div class="terminal-box-header">
+                                    <span class="text-terminal-warning"># Backend Skills</span>
+                                </div>
+                                <div class="p-6">
+                                    <div class="space-y-4">
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">C#</div>
+                                            <div class="text-terminal-muted text-sm">(Up to present version)</div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">.NET Core & .NET</div>
+                                            <div class="text-terminal-muted text-sm">(2.x, 3.x, 5.x, 6.x)</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → RESTful API, Entity Framework Core, EF Code Migration, MVC, Razor Pages
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">Databases</div>
+                                            <div class="text-terminal-muted text-sm">SQL Server, PostgreSQL, MySQL, SQLite</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → T-SQL, Functions, Stored Procedures, Triggers, Views, Normalization
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">Authentication & Authorization</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → JWT, Identity Server
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">CI/CD & DevOps</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → Azure, GitHub, GitBucket, Azure Functions
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">Infrastructure & Tools</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → Docker, NGINX, Redis, Linux (Ubuntu, Manjaro), Node.js
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Frontend Skills -->
+                            <div class="terminal-box">
+                                <div class="terminal-box-header">
+                                    <span class="text-terminal-warning"># Frontend Skills</span>
+                                </div>
+                                <div class="p-6">
+                                    <div class="space-y-4">
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">Vue.js</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → Vuetify, Vuex, Router, CLI
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">JavaScript & TypeScript</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → Modern ES6+, Async/Await, Promises
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">CSS Frameworks</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → Bootstrap, CSS3, SCSS/Sass
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">HTTP & APIs</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → Axios, AJAX, RESTful Services
+                                            </div>
+                                        </div>
+                                        <div class="skill-item">
+                                            <div class="text-terminal-accent font-bold">Legacy Support</div>
+                                            <div class="text-terminal-text text-sm mt-1">
+                                                → jQuery, HTML5, Cross-browser compatibility
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Personal Skills -->
+                        <div class="terminal-box mt-8">
+                            <div class="terminal-box-header">
+                                <span class="text-terminal-warning"># Personal Skills</span>
+                            </div>
+                            <div class="p-6">
+                                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                                    <div class="skill-tag">Team Work</div>
+                                    <div class="skill-tag">Self-motivated</div>
+                                    <div class="skill-tag">Initiative</div>
+                                    <div class="skill-tag">Creative</div>
+                                    <div class="skill-tag">Leadership</div>
+                                    <div class="skill-tag">Positive Attitude</div>
+                                    <div class="skill-tag">Quick Learning</div>
+                                    <div class="skill-tag">Communication</div>
+                                    <div class="skill-tag">Proactive</div>
+                                    <div class="skill-tag">Self-management</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Section -->
+            <section class="py-20" id="contact">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <span class="text-terminal-accent">kevin@portfolio</span>
+                        <span class="text-terminal-muted">:</span>
+                        <span class="text-terminal-text">~$</span>
+                        <span class="text-terminal-text">./contact.sh</span>
+                    </div>
+                    
+                    <div class="terminal-content mt-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Contact Info -->
+                            <div class="terminal-box">
+                                <div class="terminal-box-header">
+                                    <span class="text-terminal-warning"># Contact Information</span>
+                                </div>
+                                <div class="p-6 space-y-6">
+                                    <div class="terminal-line">
+                                        <span class="text-terminal-muted">$ whoami</span>
+                                    </div>
+                                    <div class="text-terminal-text">Kevin Mark Andrada</div>
+                                    
+                                    <div class="terminal-line mt-6">
+                                        <span class="text-terminal-muted">$ grep -i location /etc/profile</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-map-marker-alt text-terminal-accent"></i>
+                                        <span class="text-terminal-text">General Trias, Cavite, Philippines</span>
+                                    </div>
+                                    
+                                    <div class="terminal-line mt-6">
+                                        <span class="text-terminal-muted">$ cat /proc/phone</span>
+                                    </div>
+                                    <div class="flex items-center space-x-2">
+                                        <i class="fas fa-phone text-terminal-accent"></i>
+                                        <span class="text-terminal-text">+63 995 1982 280</span>
+                                    </div>
+
+                                    <div class="terminal-line mt-6">
+                                        <span class="text-terminal-muted">$ ls ~/.ssh/social_links/</span>
+                                    </div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center space-x-4">
+                                            <a href="https://github.com/kevandrada" target="_blank" class="terminal-social-link">
+                                                <i class="fab fa-github"></i>
+                                                <span>github.com/kevandrada</span>
+                                            </a>
+                                        </div>
+                                        <div class="flex items-center space-x-4">
+                                            <a href="https://www.linkedin.com/in/kevinmarkandrada" target="_blank" class="terminal-social-link">
+                                                <i class="fab fa-linkedin"></i>
+                                                <span>linkedin.com/in/kevinmarkandrada</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Contact Form -->
+                            <div class="terminal-box">
+                                <div class="terminal-box-header">
+                                    <span class="text-terminal-warning"># Send Message</span>
+                                </div>
+                                <div class="p-6">
+                                    <div class="terminal-line mb-4">
+                                        <span class="text-terminal-muted">$ nano message.txt</span>
+                                    </div>
+                                    
+                                    <form method="POST" action="https://formspree.io/f/kevinmarkandrada@gmail.com" class="space-y-4">
+                                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                            <div>
+                                                <label for="contact-name" class="terminal-label">Name:</label>
+                                                <input type="text" id="contact-name" name="name" required class="terminal-input">
+                                            </div>
+                                            <div>
+                                                <label for="contact-subject" class="terminal-label">Subject:</label>
+                                                <input type="text" id="contact-subject" name="_subject" required class="terminal-input">
+                                            </div>
+                                        </div>
+                                        
+                                        <div>
+                                            <label for="contact-email" class="terminal-label">Email:</label>
+                                            <input type="email" id="contact-email" name="email" required class="terminal-input">
+                                        </div>
+                                        
+                                        <div>
+                                            <label for="contact-message" class="terminal-label">Message:</label>
+                                            <textarea id="contact-message" name="message" rows="6" required class="terminal-input resize-none"></textarea>
+                                        </div>
+                                        
+                                        <div class="terminal-line">
+                                            <span class="text-terminal-muted">$ ./send_message.sh</span>
+                                        </div>
+                                        
+                                        <button type="submit" class="terminal-button">
+                                            <i class="fas fa-paper-plane mr-2"></i>
+                                            Execute Command
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </main>
+
+            <!-- Terminal Footer -->
+            <footer class="bg-terminal-surface border-t border-terminal-border p-6 mt-auto">
+                <div class="terminal-line">
+                    <span class="text-terminal-muted">$ cat /etc/copyright</span>
+                </div>
+                <div class="mt-2 text-terminal-text">
+                    Copyright © 2024 Kevin Mark Andrada. All rights reserved.
+                </div>
+                <div class="mt-2 text-terminal-muted text-sm">
+                    Built with ❤️ using Terminal-inspired design | Last updated: October 2024
+                </div>
+            </footer>
+        </div>
+    </div>
+
+
+    <!-- Terminal Custom Styles -->
+    <style>
+        /* Terminal-specific styles */
+        .terminal-window {
+            background: rgba(26, 26, 26, 0.95);
+            border: 1px solid #333;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .terminal-header {
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid #333;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-content {
+            padding: 1.5rem;
+        }
+
+        .terminal-box {
+            background: rgba(16, 16, 16, 0.8);
+            border: 1px solid #333;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .terminal-box-header {
+            background: rgba(0, 255, 0, 0.1);
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid #333;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-line {
+            font-family: 'JetBrains Mono', monospace;
+            margin: 0.5rem 0;
+        }
+
+        .terminal-output {
+            margin-left: 2rem;
+        }
+
+        .terminal-nav-link {
+            color: #00ff00;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-nav-link:hover {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ffff;
+            text-decoration: none;
+        }
+
+        .terminal-file-link {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #00ff00;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .terminal-file-link:hover {
+            background: rgba(0, 255, 0, 0.1);
+            border-color: #00ff00;
+            color: #00ffff;
+        }
+
+        .terminal-social-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00ff00;
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-social-link:hover {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ffff;
+        }
+
+        .terminal-job-entry {
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .terminal-job-entry:last-child {
+            border-bottom: none;
+        }
+
+        .terminal-education-entry {
+            padding: 1rem 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .terminal-education-entry:last-child {
+            border-bottom: none;
+        }
+
+        .terminal-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .terminal-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+            color: #00ff00;
+        }
+
+        .terminal-list li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #00ffff;
+        }
+
+        .skill-item {
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 4px;
+            border-left: 3px solid #00ff00;
+        }
+
+        .skill-tag {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            border: 1px solid #00ff00;
+            font-size: 0.875rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ffff;
+            border-color: #00ffff;
+        }
+
+        .terminal-label {
+            display: block;
+            color: #00ff00;
+            margin-bottom: 0.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+        }
+
+        .terminal-input {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid #333;
+            color: #00ff00;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-input:focus {
+            outline: none;
+            border-color: #00ff00;
+            box-shadow: 0 0 0 2px rgba(0, 255, 0, 0.1);
+        }
+
+        .terminal-button {
+            background: rgba(0, 255, 0, 0.1);
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            font-family: 'JetBrains Mono', monospace;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .terminal-button:hover {
+            background: rgba(0, 255, 0, 0.2);
+            color: #00ffff;
+            border-color: #00ffff;
+        }
+
+        .terminal-sidebar-link {
+            display: block;
+            padding: 0.75rem;
+            color: #00ff00;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .terminal-sidebar-link:hover {
+            background: rgba(0, 255, 0, 0.1);
+            border-left-color: #00ff00;
+            color: #00ffff;
+            transform: translateX(4px);
+        }
+
+        .terminal-sidebar-link.active {
+            background: rgba(0, 255, 0, 0.15);
+            border-left-color: #00ffff;
+            color: #00ffff;
+        }
+
+        .cursor {
+            animation: cursor 1s infinite;
+        }
+
+        .typing-animation {
+            overflow: hidden;
+            white-space: nowrap;
+            animation: typing 3.5s steps(40, end);
+        }
+
+        .fade-in-line {
+            animation: fade-in 0.8s ease-in-out;
+            animation-fill-mode: both;
+        }
+
+        .fade-in-line:nth-child(1) { animation-delay: 1s; }
+        .fade-in-line:nth-child(2) { animation-delay: 2s; }
+        .fade-in-line:nth-child(3) { animation-delay: 3s; }
+        .fade-in-line:nth-child(4) { animation-delay: 3.5s; }
+
+        /* Mobile responsiveness */
+        @media (max-width: 1024px) {
+            .terminal-content {
+                padding: 1rem;
+            }
+            
+            /* Hide sidebar on mobile, show overlay */
+            .w-80 {
+                left: -320px !important;
+                transition: left 0.3s ease;
+                z-index: 60;
+            }
+            
+            .w-80.mobile-menu-open {
+                left: 0 !important;
+            }
+            
+            /* Remove left margin on mobile */
+            .ml-80 {
+                margin-left: 0 !important;
+            }
+            
+            #mobile-menu.hidden {
+                display: none;
+            }
+            
+            #mobile-menu {
+                display: block;
+            }
+        }
+    </style>
+
+    <!-- Terminal JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set login time
+            const now = new Date();
+            const loginTime = now.toLocaleString('en-US', {
+                weekday: 'short',
+                month: 'short',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            const loginElement = document.getElementById('login-time');
+            if (loginElement) {
+                loginElement.textContent = loginTime + ' on ttys001';
+            }
+
+            // Mobile menu toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const sidebar = document.querySelector('.w-80');
+            
+            if (mobileMenuBtn && sidebar) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    sidebar.classList.toggle('mobile-menu-open');
+                    console.log('$ toggle mobile_sidebar');
+                });
+                
+                // Close sidebar when clicking on content area on mobile
+                document.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 1024 && 
+                        !sidebar.contains(e.target) && 
+                        !mobileMenuBtn.contains(e.target) && 
+                        sidebar.classList.contains('mobile-menu-open')) {
+                        sidebar.classList.remove('mobile-menu-open');
+                    }
+                });
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close mobile menu if open
+                        if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+                            mobileMenu.classList.add('hidden');
+                        }
+                    }
+                });
+            });
+
+            // Terminal typing effect for command prompt
+            function typeWriter(element, text, speed = 100) {
+                let i = 0;
+                element.innerHTML = '';
+                
+                function type() {
+                    if (i < text.length) {
+                        element.innerHTML += text.charAt(i);
+                        i++;
+                        setTimeout(type, speed);
+                    }
+                }
+                type();
+            }
+
+            // Add some interactive terminal behaviors
+            setTimeout(() => {
+                const commandElements = document.querySelectorAll('.typing-animation');
+                commandElements.forEach((element, index) => {
+                    setTimeout(() => {
+                        typeWriter(element, element.textContent, 50);
+                    }, index * 1000);
+                });
+            }, 500);
+
+            // Terminal window focus effects
+            document.querySelectorAll('.terminal-window').forEach(window => {
+                window.addEventListener('mouseenter', function() {
+                    this.style.boxShadow = '0 0 20px rgba(0, 255, 0, 0.1)';
+                });
+                
+                window.addEventListener('mouseleave', function() {
+                    this.style.boxShadow = '';
+                });
+            });
+        });
+    </script>
+
+    <!-- Terminal-specific JavaScript -->
+    <script src="js/terminal-app.js"></script>
+
+</body>
+
+</html>
